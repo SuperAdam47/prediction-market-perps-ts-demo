@@ -1,0 +1,351 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 30 8% 6%;
+    --foreground: 43 20% 95%;
+
+    --card: 30 8% 10%;
+    --card-foreground: 43 20% 95%;
+
+    --popover: 30 8% 10%;
+    --popover-foreground: 43 20% 95%;
+
+    --primary: 44 92% 47%;
+    --primary-foreground: 30 8% 8%;
+
+    --secondary: 44 85% 40%;
+    --secondary-foreground: 43 20% 95%;
+
+    --muted: 30 8% 15%;
+    --muted-foreground: 43 15% 60%;
+
+    --accent: 44 92% 55%;
+    --accent-foreground: 30 8% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 43 20% 95%;
+
+    --success: 142 76% 45%;
+    --success-foreground: 43 20% 95%;
+
+    --bullish: 142 60% 42%;
+    --bullish-foreground: 0 0% 100%;
+
+    --bearish: 0 70% 48%;
+    --bearish-foreground: 0 0% 100%;
+
+    --border: 43 30% 20%;
+    --input: 30 8% 15%;
+    --ring: 44 92% 47%;
+
+    --radius: 0.75rem;
+
+    --gradient-start: 30 8% 6%;
+    --gradient-end: 43 20% 10%;
+
+    --glow-gold: 44 92% 47%;
+    --glow-gold-light: 44 92% 55%;
+    --glow-green: 142 76% 50%;
+    --glow-red: 0 84% 60%;
+    
+    --sidebar-background: 30 8% 8%;
+    --sidebar-foreground: 43 20% 95%;
+    --sidebar-primary: 44 92% 47%;
+    --sidebar-primary-foreground: 30 8% 8%;
+    --sidebar-accent: 30 8% 12%;
+    --sidebar-accent-foreground: 43 20% 95%;
+    --sidebar-border: 43 30% 20%;
+    --sidebar-ring: 44 92% 47%;
+  }
+}
+.glass-panel {
+  background: linear-gradient(135deg, hsl(var(--card) / 0.7), hsl(var(--card) / 0.5));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-card);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))] text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/40 border border-border/50;
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+  
+  .glass-strong {
+    @apply bg-card/60 border border-border/70;
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+  }
+
+  .glass-card {
+    @apply glass;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--glow-gold) / 0.4), 0 0 40px hsl(var(--glow-gold) / 0.1);
+  }
+
+  .glow-gold-light {
+    box-shadow: 0 0 20px hsl(var(--glow-gold-light) / 0.3);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--glow-green) / 0.3);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--glow-red) / 0.3);
+  }
+
+  .gold-glow-hover {
+    transition: all 0.3s ease;
+  }
+
+  .gold-glow-hover:hover {
+    box-shadow: 0 0 30px hsl(var(--glow-gold) / 0.5);
+    border-color: hsl(var(--primary));
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--glow-gold) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--glow-gold) / 0.6);
+    }
+  }
+
+  .animate-ticker {
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .number-change-up {
+    animation: number-up 0.5s ease;
+  }
+
+  .number-change-down {
+    animation: number-down 0.5s ease;
+  }
+
+  @keyframes number-up {
+    0% {
+      transform: translateY(10px);
+      opacity: 0;
+      color: hsl(var(--bullish));
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes number-down {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+      color: hsl(var(--bearish));
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Custom Scrollbar Styles */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.5) hsl(var(--muted) / 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.2);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary) / 0.6),
+      hsl(var(--secondary) / 0.6)
+    );
+    border-radius: 10px;
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary) / 0.8),
+      hsl(var(--secondary) / 0.8)
+    );
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.4);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .slide-in-from-top-2 {
+    animation-name: slide-in-from-top-2;
+  }
+
+  .slide-in-from-top-4 {
+    animation-name: slide-in-from-top-4;
+  }
+
+  .slide-in-from-bottom-4 {
+    animation-name: slide-in-from-bottom-4;
+  }
+
+  .slide-in-from-left-4 {
+    animation-name: slide-in-from-left-4;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-top-2 {
+    from {
+      transform: translateY(-0.5rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-top-4 {
+    from {
+      transform: translateY(-1rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-bottom-4 {
+    from {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-left-4 {
+    from {
+      transform: translateX(-1rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
