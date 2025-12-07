@@ -104,9 +104,13 @@ const Index = () => {
       <CategoryMenu selectedCategory={selectedCategory} onCategoryChange={(cat) => setSelectedCategory(cat as typeof CATEGORIES[number])} />
 
       <div className="container mx-auto px-4 py-2">
-        {/* Hero Banner */}
-        <Hero markets={markets.map(m => ({ id: m.id, title: m.title, currentProbability: m.currentProbability }))} />
-        <Ticker />
+        {/* Hero Banner - Only show when "All" category is selected */}
+        {selectedCategory === "All" && (
+          <>
+            <Hero markets={markets.map(m => ({ id: m.id, title: m.title, currentProbability: m.currentProbability }))} />
+            <Ticker />
+          </>
+        )}
 
         {/* Active Positions */}
         <ActivePositions positions={positions} onClose={handleClosePosition} />
