@@ -98,7 +98,7 @@ export const MarketCard = memo(function MarketCard({ id, title, category, initia
   return (
     <div 
       onClick={handleCardClick}
-      className="glass-card rounded-xl p-3 sm:p-5 gold-glow-hover hover:scale-[1.02] transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
+      className="glass-card rounded-xl p-2 sm:p-3 gold-glow-hover hover:scale-[1.02] transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
     >
       {/* Header */}
       <div className="mb-1 sm:mb-2">

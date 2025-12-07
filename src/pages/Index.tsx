@@ -112,8 +112,8 @@ const Index = () => {
         <ActivePositions positions={positions} onClose={handleClosePosition} />
 
         {/* Markets Grid */}
-        <div id="markets" className="mt-8 sm:mt-12 mb-6 scroll-mt-20">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-2 sm:gap-4">
+        <div id="markets" className="mt-6 sm:mt-8 mb-6 scroll-mt-20">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-1 sm:gap-2">
             <h2 className="text-xl sm:text-2xl font-bold">Markets</h2>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground flex-wrap">
               <span>
@@ -124,9 +124,9 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6">
             {filteredMarkets.length === 0 ? (
-              <div className="col-span-full text-center py-12 text-muted-foreground animate-in fade-in">
+              <div className="col-span-full text-center py-8 text-muted-foreground animate-in fade-in">
                 No markets found in this category.
               </div>
             ) : (
